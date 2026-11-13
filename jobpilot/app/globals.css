@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f5f6fa;
+  --surface: #ffffff;
+  --line: #e4e7f0;
+  --ink: #0e1222;
+  --brand: #2f4bff;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink-50 text-ink-900 antialiased;
+  background-image:
+    radial-gradient(820px 420px at 88% -12%, rgba(47, 75, 255, 0.07), transparent 62%),
+    radial-gradient(620px 360px at 0% -8%, rgba(91, 107, 255, 0.05), transparent 58%);
+  background-attachment: fixed;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(47, 75, 255, 0.16);
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d6dae8;
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b9bed4;
+  background-clip: content-box;
+  border: 3px solid transparent;
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl2 border border-ink-200/80 bg-white shadow-card;
+  }
+
+  .card-hover {
+    @apply transition duration-200 hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-lift;
+  }
+
+  .btn {
+    @apply inline-flex select-none items-center justify-center gap-2 rounded-[10px] text-sm font-medium transition-all duration-150
+      focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-500/15
+      disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-brand-500 text-white shadow-[0_8px_18px_-10px_rgba(47,75,255,0.65)] hover:bg-brand-600 active:scale-[0.985];
+  }
+  .btn-ghost {
+    @apply btn border border-ink-200 bg-white text-ink-700 hover:border-ink-300 hover:bg-ink-50;
+  }
+  .btn-soft {
+    @apply btn bg-brand-50 text-brand-600 hover:bg-brand-100;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full border border-ink-200 bg-white px-2.5 py-0.5 text-xs font-medium text-ink-500;
+  }
+
+  .input {
+    @apply w-full rounded-[10px] border border-ink-200 bg-white px-3 py-2 text-sm text-ink-900 outline-none transition
+      placeholder:text-ink-400 focus:border-brand-400 focus:ring-4 focus:ring-brand-500/10;
+  }
+
+  .label {
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-wide text-ink-400;
+  }
+
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-500;
+  }
+
+  .shimmer {
+    background: linear-gradient(90deg, #edf0f7 25%, #f7f8fc 37%, #edf0f7 63%);
+    background-size: 200% 100%;
+    @apply animate-shimmer;
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, rgba(14, 18, 34, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(14, 18, 34, 0.045) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+
+  .mask-fade-b {
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-brand-500 via-brand-400 to-hit bg-clip-text text-transparent;
+  }
+
+  .icon-tile {
+    @apply grid place-items-center rounded-xl bg-gradient-to-br from-brand-500 to-brand-400 text-white
+      shadow-[0_8px_16px_-8px_rgba(47,75,255,0.6)];
+  }
+
+  .stat-card {
+    @apply rounded-xl2 border border-ink-200/80 bg-white px-4 py-3.5 shadow-[0_1px_2px_rgba(14,18,34,0.03)];
+  }
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(22px, -26px, 0) scale(1.07); }
+}
+.animate-floaty {
+  animation: floaty 9s ease-in-out infinite;
+}
+.animate-floaty-slow {
+  animation: floaty 14s ease-in-out infinite reverse;
+}
+
+/* 流式光标 */
+.caret::after {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 15px;
+  margin-left: 2px;
+  vertical-align: -2px;
+  background: #2f4bff;
+  border-radius: 1px;
+  animation: blink 1s steps(2, start) infinite;
+}
