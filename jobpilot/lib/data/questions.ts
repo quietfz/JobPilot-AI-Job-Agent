@@ -44,7 +44,7 @@ export const QUESTIONS: QuestionItem[] = [
     dimension: 'depth',
     topic: '性能优化',
     tags: ['性能', '首屏', 'LCP', '优化'],
-    text: '你提到做过性能优化，能具体说明优化前后的指标变化，以及你是如何定位瓶颈吗？',
+    text: '你提到做过性能优化，能具体说明优化前后的指标变化，以及你如何定位瓶颈吗？',
     intent: '验证性能优化是否真的做过，是否具备"测量—定位—验证"的完整闭环。',
     reference: '定位手段：Lighthouse / Performance 面板 / 火焰图；常用手段：代码分割、资源预加载、图片压缩、缓存策略；必须给出前后指标对比。',
     source: '面经库 · 前端性能专题',
